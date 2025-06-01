@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Деталі факультету (Адмін)</title>
+</head>
+<body>
+<h2 th:text="${faculty.name}">Назва факультету</h2>
+
+<p>Математика: <span th:text="${faculty.mathWeight}"/></p>
+<p>Українська: <span th:text="${faculty.ukrWeight}"/></p>
+<p>Англійська: <span th:text="${faculty.engWeight}"/></p>
+<p>Кількість місць: <span th:text="${faculty.capacity}"/></p>
+
+<form th:action="@{'/admin/faculty/' + ${faculty.id}}" method="post">
+  <button type="submit">Завершити відбір</button>
+</form>
+
+<h3>Заявки</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Ім’я</th>
+    <th>Середній бал</th>
+    <th>Пріоритет</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="app, iterStat : ${faculty.applications}"
+      th:class="${faculty.draftFinished and iterStat.index < faculty.capacity} ? 'accepted' : ''">
+    <td th:text="${app.user.fullName}"/>
+    <td th:text="${app.avgScore}"/>
+    <td th:text="${app.priority}"/>
+  </tr>
+  </tbody>
+</table>
+
+<style>
+  .accepted {
+    background-color: lightgreen;
+  }
+</style>
+
+</body>
+</html>

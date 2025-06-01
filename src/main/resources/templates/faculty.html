@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі факультету</title>
+</head>
+<body>
+<h2 th:text="${faculty.name}">Назва факультету</h2>
+
+<h3>Заявки</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Ім’я</th>
+        <th>Середній бал</th>
+        <th>Пріоритет</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app, iterStat : ${faculty.applications}"
+        th:class="${faculty.draftFinished and iterStat.index < faculty.capacity} ? 'accepted' : ''">
+        <td th:text="${app.user.fullName}"></td>
+        <td th:text="${app.avgScore}"></td>
+        <td th:text="${app.priority}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<style>
+    .accepted {
+        background-color: lightgreen;
+    }
+</style>
+
+<div th:if="${!hasApplied and !faculty.draftFinished}">
+    <form th:action="@{'/application'}" method="post">
+        <input type="hidden" th:value="${faculty.id}" name="facultyId">
+        <label for="priority">Пріоритет:
+            <input type="number" id="priority" name="priority" min="1" max="5" required/>
+        </label>
+        <button type="submit">Подати заявку</button>
+    </form>
+</div>

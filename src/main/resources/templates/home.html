@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна сторінка</title>
+</head>
+<body>
+<h1>Вітаємо у системі подачі заявок!</h1>
+
+<ul>
+    <li><a th:href="@{/faculty}">Переглянути факультети</a></li>
+    <li><a th:href="@{/application}">Мої анкети</a></li>
+</ul>
+
+<div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+    <a th:href="@{/admin/faculty}">
+        <button>Адмін - керування факультетами</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Факультети</title>
+</head>
+<h2>Факультети з відкритим відбором</h2>
+<ul>
+  <li th:each="faculty : ${faculties}" th:if="${!faculty.draftFinished}">
+    <a th:href="@{'/faculty/' + ${faculty.id}}"
+       th:text="${faculty.name} + ' (Місць: ' + ${faculty.capacity} + ')'"></a>
+  </li>
+</ul>
+
+<h2>Факультети з завершеним відбором</h2>
+<ul>
+  <li th:each="faculty : ${faculties}" th:if="${faculty.draftFinished}">
+    <a th:href="@{'/faculty/' + ${faculty.id}}"
+       th:text="${faculty.name} + ' (Місць: ' + ${faculty.capacity} + ')'"></a>
+  </li>
+</ul>

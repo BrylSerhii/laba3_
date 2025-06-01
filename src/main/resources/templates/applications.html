@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мої заявки</title>
+</head>
+<body>
+<h1>Мої анкети</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Факультет</th>
+        <th>Середній бал</th>
+        <th>Пріоритет</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${applications}">
+        <td>
+            <a th:href="@{'/faculty/' + ${app.faculty.id}}"
+               th:text="${app.faculty.name}">Назва факультету</a>
+        </td>
+        <td th:text="${app.avgScore}">---</td>
+        <td th:text="${app.priority}">---</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
