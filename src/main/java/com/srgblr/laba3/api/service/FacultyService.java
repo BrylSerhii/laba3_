@@ -3,7 +3,6 @@ package com.srgblr.laba3.api.service;
 import com.srgblr.laba3.api.database.entity.Faculty;
 import com.srgblr.laba3.api.database.repository.FacultyRepository;
 import com.srgblr.laba3.api.dto.FacultyCreateDto;
-import com.srgblr.laba3.security.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

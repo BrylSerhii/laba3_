@@ -1,7 +1,6 @@
 package com.srgblr.laba3.api.http.controller;
 
 import com.srgblr.laba3.api.dto.ApplicationCreateDto;
-import com.srgblr.laba3.api.dto.FacultyCreateDto;
 import com.srgblr.laba3.api.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

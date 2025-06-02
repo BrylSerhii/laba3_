@@ -1,7 +1,6 @@
 package com.srgblr.laba3.api.database.repository;
 
 import com.srgblr.laba3.api.database.entity.Application;
-import jakarta.persistence.OrderBy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.srgbrl.laba3;
+package com.srgblr.laba3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
